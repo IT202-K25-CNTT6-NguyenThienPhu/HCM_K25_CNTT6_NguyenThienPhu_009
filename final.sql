@@ -12,10 +12,11 @@ CREATE TABLE Employees (
 
 CREATE TABLE Employee_Details (
 	detail_id INT PRIMARY KEY,
-    employee_id INT,
+    employee_id INT UNIQUE,
     citizen_id INT NOT NULL UNIQUE,
     address TEXT NOT NULL,
-    working_status VARCHAR(20) CHECK(ENUM = ('Active','Inactive'))
+    working_status VARCHAR(20) CHECK(ENUM = ('Active','Inactive')),
+    CONSTRAINT FOREIGN KEY (employee_id) REFERENCES Employees(employee_id)
 );
 
 CREATE TABLE Departments (
@@ -134,7 +135,7 @@ WHERE total_budget > 40000000;
 -- Câu 3
 SELECT employee_id, full_name, working_status
 FROM Employee_Details
-WHERE ;
+WHERE full_name 
 
 
 -- Phần 5
